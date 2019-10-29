@@ -1,0 +1,55 @@
+.blockstyle {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 5px;
+	border: 1px black;
+	background: #cccccc;
+	border-radius: 6px;
+	margin-bottom: 10px;
+
+}
+
+.layer1 {
+	font: 9pt monospace;
+	text-align: left;
+	margin: 5px;
+	font-family: 'Roboto Slab', serif;
+}
+.layer1 a {
+	color: #3B3C40;
+	font-size: 14px;
+	font-weight: 700;
+	transition: 0.5s ease-in-out;
+}
+.layer1 a:hover {
+	transition: 0.5s ease-in-out;
+	opacity: 0.8;
+}
+.right {
+	height: 27px; 
+	margin: 5px;
+	}
+.__r {
+	color: #3B3C40;
+	font-family: 'Roboto Slab', serif;
+	font-size: 14px;
+	line-height: 24px;
+	width: 200px;
+	border: 1px solid #3B3C40;
+	border-radius: 30px;
+	transition: 0.5s ease-in-out;
+}
+
+.__r:hover {
+	transition: 0.5s ease-in-out;
+	opacity: 0.8;
+}
+.line{
+	padding-bottom: 12px;
+	border-bottom: 1px solid #dddddd;
+	display: flex;
+	justify-content: space-between;
+}
+.top{
+	padding-top: 12px;
+}
