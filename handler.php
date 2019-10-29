@@ -32,7 +32,7 @@ include_once 'my_sql.php';
     function check_p($reg_auth){
         //var_dump($reg_auth);
         if (!$reg_auth){//0--sign up
-            if ($_POST['username_reg']=='') $status_err['name_reg'] = true;
+            if ($_POST['polis_reg']=='') $status_err['name_reg'] = true;
             else    $status_err['name_reg'] = false;//
             if ($_POST['soap']=='') $status_err['email'] = true;
             else    $status_err['email'] = false;//
@@ -45,7 +45,7 @@ include_once 'my_sql.php';
             return $status_err;
         }
         elseif ($reg_auth){
-            if ($_POST['username']=='') $status_err['name'] = true;
+            if ($_POST['polis']=='') $status_err['name'] = true;
             else $status_err['name'] = false;
             if ($_POST['pass']=='') $status_err['pass']=true;
             else $status_err['pass'] = false;
@@ -73,10 +73,12 @@ include_once 'my_sql.php';
             $status_err['no'] = check_p(0);
             //var_dump($status_err);
             if ($status_err['no']['check']) {
-                $reg_name = $_POST['username_reg'];
+                $reg_polis = $_POST['polis_reg'];
                 $passconf1 = $_POST['pass-'];
                 $passconf2 = $_POST['pass+'];
                 $email = $_POST['soap'];
+                $name = $_POST['name'];
+                $surname = $_POST['surname'];
 
                 $sql = "SELECT * FROM user_db where name=:name";
                 $a = sql_q($sql, $dbh, 'name', $reg_name);
@@ -114,7 +116,7 @@ include_once 'my_sql.php';
         else {//sign
             //die('!');
             //форма входа
-            $name = $_POST['username'];
+            $name = $_POST['polis'];
             $pass = $_POST['pass'];
             $status_err['no'] = check_p(1);
             //var_dump($status_err);
@@ -168,7 +170,7 @@ include_once 'my_sql.php';
                     if ($status_err['no']['name']==true)  echo '<p class="wr"><b>заполните это поле</b></p>';
                     elseif($status_err['user !exist']==true) echo '<p class="wr"><b>Данного пользователя не существует</b></p>';
                     echo '<p> Имя пользователя(от 5 до 20 символов, только буквы латинского алфавита)</p>';
-                    $inp_login->make_input_echo('username','Введите логин','[a-zA-Z0-9]{5,20}');
+                    $inp_login->make_input_echo('polis','Введите логин','[a-zA-Z0-9]{5,20}');
 
 
                     if ($status_err['no']['pass']==true)  echo '<p class="wr"><b>заполните это поле</b></p>';
@@ -190,7 +192,7 @@ include_once 'my_sql.php';
 
                     if ($status_err['no']['name_reg']==true)  echo '<p class="wr"><b>заполните это поле</b></p>';
                     echo '<p> Имя пользователя(от 5 до 20 символов, только буквы латинского алфавита)</p>';
-                    $inp_login->make_input_echo('username_reg','Придумайте логин','[a-zA-Z0-9]{5,20}');
+                    $inp_login->make_input_echo('polis_reg','Придумайте логин','[a-zA-Z0-9]{5,20}');
 
                     if ($status_err['no']['soap']==true)  echo '<p class="wr"><b>заполните это поле</b></p>';
                     echo '<p>Введите адресс e-mail</p>';
