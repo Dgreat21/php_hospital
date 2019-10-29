@@ -1,6 +1,8 @@
 <?php
-include_once "header.html"
+include_once "header.html";
+include_once "footer.html";
 ?>
+
 <section>
 <div class="wrapper">
 	<div class="content">
