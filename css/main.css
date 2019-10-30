@@ -177,9 +177,8 @@ h1 .cent{
 #inputs input {
 	font-family: 'Roboto Slab', serif;
 	background: #f1f1f1;
-	padding: 4% 4% 4% 8%;
+	padding: 16px 12px;
 	margin-bottom: 10px;
-	width: 90%;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
@@ -191,6 +190,11 @@ h1 .cent{
 	-moz-box-sizing:content-box;
 	-ms-box-sizing:content-box;
 	box-sizing:content-box;
+}
+
+#username, #password {
+	width: calc(100% - 24px);
+	position: relative;
 }
 
 .inputs{
@@ -217,34 +221,39 @@ h1 .cent{
     /* position: absolute; */
     margin: 0 auto;
     width: 500px;
+	height: fit-content;
+	z-index: 25;
     /* left: 50%; */
     /* z-index: 0; */
     /* border-radius: 3px; */
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, .2), 0 3px 0 #fff, 0 4px 0 rgba(0, 0, 0, .2), 0 6px 0 #fff, 0 7px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-}
-#login:before {
-	content: '';
-	position: absolute;
-	z-index: -1;
-	border: 1px dashed #ccc;
-	top: 5px;
-	bottom: 5px;
-	left: 5px;
-	right: 5px;
-	box-shadow: 0 0 0 1px #fff;
-}
-#username{
-	width: 100%;
-	margin-bottom: 10px;
-}
+
 #haveno_account {
 	display: block;
 	width: 200px;
 	margin: 0 auto;
 }
+
 #actions {
 	border: none;
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
 }
+
+.login-background {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+	z-index: 2000000000;
+	justify-content: center;
+	align-items: center;
+}
+
+.meta-div {
+	position: fixed;
+}
+
+

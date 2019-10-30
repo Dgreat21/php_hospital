@@ -6,9 +6,9 @@
  * Time: 21:00
  */
     //include 'err.php';
-    $dsn = 'mysql:dbname=u0617678_default;host=localhost';
-    $user = 'jfhdbgbskfdbghkhd';
-    $password = 'dfklmblkn';
+    $dsn = 'mysql:dbname=den_test;host=localhost';
+    $user = 'den';
+    $password = 'jDhIIhWLmBqX';
     try {
         $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8mb4 collate utf8mb4_general_ci'));
     } catch (PDOException $e) {
@@ -30,9 +30,9 @@ function sql_q($sql, $dbh, $key, $var=NULL)
         case 'info':
             return $res;
             break;
-        case 'name':
+        case 'polis':
             $a=0;
-            if ($res[0]['name']!=NULL) {$a++;};
+            if ($res[0]['polis']!=NULL) {$a++;};
 
             return $a;
             break;
