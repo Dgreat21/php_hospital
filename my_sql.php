@@ -18,7 +18,7 @@ function sql_q($sql, $dbh, $key, $var=NULL)
 {
     $sth = $dbh->prepare($sql);
     if ($var!=NULL) {
-        $sth->bindParam(':name', $var, PDO::PARAM_STR);
+        $sth->bindParam(':polis', $var, PDO::PARAM_STR);
     }
     $c=$sth->execute();
 

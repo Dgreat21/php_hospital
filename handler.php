@@ -152,6 +152,7 @@ include_once 'my_sql.php';
 //            }
 //        }
     }
+//		header('Location:reference.php');
 //    include 'toolbar.php';
 //    //var_dump($status_err);
 //    require_once  ("area_gen.php");

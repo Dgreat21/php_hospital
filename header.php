@@ -1,3 +1,10 @@
+<?
+    session_start();
+if ($_SESSION['name'] == NULL) {
+	$_SESSION['name'] = "Войти";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +34,7 @@
 					</ul>
 				</nav>
 			</div>
-			<button class="login" onclick="add_market_meta()">Войти</button>
+			<button class="login" onclick="add_market_meta()"><?=$_SESSION['name']?></button>
 		</div>
 	</div>
 </header>
