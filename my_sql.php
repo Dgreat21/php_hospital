@@ -6,7 +6,7 @@
  * Time: 21:00
  */
     //include 'err.php';
-    $dsn = 'mysql:dbname=den_test;host=localhost';
+    $dsn = 'mysql:dbname=den_test2;host=localhost';
     $user = 'den';
     $password = 'jDhIIhWLmBqX';
     try {
@@ -14,7 +14,7 @@
     } catch (PDOException $e) {
         echo 'Подключение не удалось: ' . $e->getMessage();
     }
-function sql_q($sql, $dbh, $key, $var=NULL)
+function sql_quarry($sql, $dbh, $key, $var=NULL)
 {
     $sth = $dbh->prepare($sql);
     if ($var!=NULL) {
@@ -23,6 +23,7 @@ function sql_q($sql, $dbh, $key, $var=NULL)
     $c=$sth->execute();
 
     $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($res);
     switch ($key){
         case 'id':
             return $res[0]['id'];

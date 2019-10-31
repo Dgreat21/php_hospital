@@ -1,8 +1,11 @@
-<?
+<?php
     session_start();
 if ($_SESSION['name'] == NULL) {
-	$_SESSION['name'] = "Войти";
+	$name = "Войти";
 }
+else
+	$name = "Здравствуйте, " . $_SESSION['name'] . " " . $_SESSION['surname'];
+
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +37,7 @@ if ($_SESSION['name'] == NULL) {
 					</ul>
 				</nav>
 			</div>
-			<button class="login" onclick="add_market_meta()"><?=$_SESSION['name']?></button>
+			<button class="login" onclick="add_market_meta()"><?=$name?></button>
 		</div>
 	</div>
 </header>

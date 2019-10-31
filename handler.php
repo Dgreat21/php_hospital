@@ -9,15 +9,16 @@
     session_start();
 include_once 'my_sql.php';
 
-    if ($_SESSION['name']!=NULL){
-        header('Location:profile.php');
-        die();
-    }
+//    if ($_SESSION['name']!=NULL){
+//        header('Location:profile.php');
+//        die();
+//    }
     $status_err = [
         'wr conf' => false,//пароли не совпадают
         'user exist' => false,// пользователь с данным именем уже существует
         'user !exist' => false,//пользователь с данным именем не существует
         'wr pass' => false,//неправильный пароль
+	    'check' => false,
         'no'=>[
             'name'=>false,
             'pass'=>false,
@@ -25,7 +26,6 @@ include_once 'my_sql.php';
             'pass+'=>false,
             'pass-'=>false,
             'email'=>false,
-            'check'=>false,
         ],
     ];
 
@@ -49,9 +49,10 @@ include_once 'my_sql.php';
 //            else $status_err['name'] = false;
 //        if ($_POST['pass']=='') $status_err['pass']=true;
 //        else $status_err['pass'] = false;
-            $status_err['name'] = ($_POST['polis']=='') ? (true) : (false);
-            $status_err['pass'] = ($_POST['pass']=='') ? (true) : (false);
-            $status_err['check'] = !($status_err['name'] || $status_err['pass']);
+            var_dump($_POST);
+	        $status_err['name'] = ($_POST['polis']=='') ? (false) : (true);
+            $status_err['pass'] = ($_POST['password']=='') ? (false) : (true);
+            $status_err['check'] = ($status_err['name'] && $status_err['pass']);
 
             return $status_err;
 //        }
@@ -117,28 +118,33 @@ include_once 'my_sql.php';
 //        }
 //        else {//sign
             //die('!');
-
-
-            //форма входа
-            $polis = $_POST['polis'];
-            $pass = $_POST['pass'];
-            $status_err['no'] = check_p(1);
-            //var_dump($status_err);
-            if ($status_err['no']['check']) {
-
+//форма входа
+$polis = $_POST['polis'];
+$pass = $_POST['password'];
+$status_err = check_p(1);
+var_dump($status_err);
+//var_dump($status_err);
+echo "stat test";
+            if ($status_err['check']) {
+			echo "test 1";
                 $sql = "SELECT * FROM patient where polis=:polis";
-                $a=sql_q($sql,$dbh,'polis',$polis);
-                //var_dump($a);
-
+                $a = sql_quarry($sql,$dbh,'polis',$polis);
+                var_dump($a);
+	            echo "test sql";
                 if ($a != 0) {
-                    $res = sql_q($sql, $dbh, 'info', $polis);
+                    $res = sql_quarry($sql, $dbh, 'info', $polis);
                     if ($res == NULL) {
                         echo 'обнаружен баг, напишите разработчику, e-mail:denis.mazohin@ya.ru';
                         die();
                     }
+	                echo "test";
+	                var_dump($res[0]['pass']);
+	                var_dump($pass);
+
                     if (password_verify($pass,$res[0]['pass'])) {
                         $_SESSION['id'] = $res[0]['id'];// выдается id
-                        $_SESSION['name'] = $res[0]['name'];//сессии передаётся имя пользователя для вывода его на экране
+                        $_SESSION['name'] = $res[0]['name_'];//сессии передаётся имя пользователя для вывода его на экране
+                        $_SESSION['surname'] = $res[0]['surname'];//сессии передаётся имя пользователя для вывода его на экране
 
 //                        $_SESSION['ed'] = $res[0]['red'];
                         // //var_dump($_SESSION['ed']);
