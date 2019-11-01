@@ -23,6 +23,7 @@ function add_market_meta(){
     form.setAttribute('id', 'login');
     form.setAttribute('method', 'post');
     form.setAttribute('action', 'handler.php');
+    form.setAttribute('name', 'Вход');
     /*Заголовок*/
     h1 = document.createElement("h1");
     h1.textContent = "Авторизация";

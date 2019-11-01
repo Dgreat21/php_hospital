@@ -9,6 +9,7 @@
     $dsn = 'mysql:dbname=den_test2;host=localhost';
     $user = 'den';
     $password = 'jDhIIhWLmBqX';
+    
     try {
         $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8mb4 collate utf8mb4_general_ci'));
     } catch (PDOException $e) {
@@ -23,7 +24,6 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
     $c=$sth->execute();
 
     $res = $sth->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($res);
     switch ($key){
         case 'id':
             return $res[0]['id'];
@@ -44,14 +44,20 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
 
 }
 
-    function sql_c($sql, $dbh, $name, $pass ,$email){
+    function sql_c($sql, $dbh, $data){
         $sth = $dbh->prepare($sql);
-        $sth->bindParam(':name', $name, PDO::PARAM_STR);
-        $sth->bindParam(':pass', $pass, PDO::PARAM_STR);
-        if($email!=NULL)    $sth->bindParam(':email',$email,PDO::PARAM_STR);
+
+        $sth->bindParam(':name',     $data['name'],     PDO::PARAM_STR);
+        $sth->bindParam(':surname',  $data['surname'],  PDO::PARAM_STR);
+        $sth->bindParam(':polis',    $data['polis'],    PDO::PARAM_STR);
+        $sth->bindParam(':email',    $data['soap'],    PDO::PARAM_STR);
+        $sth->bindParam(':pass',     $data['hash'],     PDO::PARAM_STR);
+
         $a = $sth->execute();
         return $a;
     }
+
+
     function sql_art_up($art,$dbh)
 
     {
@@ -78,13 +84,6 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
         $res=sql_q($sql,$dbh,'info');
         return $res[0];
     }
-//    $dsn = 'mysql:dbname=den_test;host=localhost';
-//    $user = 'den';
-//    $password = 'jDhIIhWLmBqX';
-//    try {
-//        $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8mb4 collate utf8mb4_general_ci'));
-//    } catch (PDOException $e) {
-//        echo 'Подключение не удалось: ' . $e->getMessage();
-//    }
+
 
 

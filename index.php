@@ -17,7 +17,7 @@ include_once "header.php";
                 </form>
                 <div class="about_oms">
                     <a href="#">Как записаться?</a>
-                    <a href="#">Что такое полис ОМС?</a>
+                    <a href="https://alfastrahoms.ru/about-oms/detail/">Что такое полис ОМС?</a>
                 </div>
             </div>
             <div id="meta"></div>
