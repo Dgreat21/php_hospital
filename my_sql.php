@@ -9,7 +9,7 @@
     $dsn = 'mysql:dbname=den_test2;host=localhost';
     $user = 'den';
     $password = 'jDhIIhWLmBqX';
-    
+
     try {
         $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8mb4 collate utf8mb4_general_ci'));
     } catch (PDOException $e) {
