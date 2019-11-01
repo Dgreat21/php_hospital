@@ -49,7 +49,7 @@ include_once 'my_sql.php';
 //            else $status_err['name'] = false;
 //        if ($_POST['pass']=='') $status_err['pass']=true;
 //        else $status_err['pass'] = false;
-            var_dump($_POST);
+//            var_dump($_POST);
 	        $status_err['name'] = ($_POST['polis']=='') ? (false) : (true);
             $status_err['pass'] = ($_POST['password']=='') ? (false) : (true);
             $status_err['check'] = ($status_err['name'] && $status_err['pass']);
@@ -69,68 +69,74 @@ include_once 'my_sql.php';
         'cost' => 13,
     ];
 
-//    if (($_POST['action']!=NULL)) {
-//
-//        if ($_POST['action'] == 'Регистрация') {
-//            //форма регистрации
-//            $status_err['no'] = check_p(0);
-//            //var_dump($status_err);
-//            if ($status_err['no']['check']) {
+    if (($_POST['action']!=NULL)) {
+
+        if ($_POST['action'] == 'Регистрация') {
+            //форма регистрации
+            $status_err['no'] = check_p(0);
+            //var_dump($status_err);
+            if ($status_err['no']['check']) {
 //                $reg_polis = $_POST['polis_reg'];
-//                $passconf1 = $_POST['pass-'];
-//                $passconf2 = $_POST['pass+'];
+//                $passconf1 = $_POST['password'];
+//                $passconf2 = $_POST['password_confirm'];
 //                $email = $_POST['soap'];
 //                $name = $_POST['name'];
 //                $surname = $_POST['surname'];
-//
-//                $sql = "SELECT * FROM user_db where name=:name";
-//                $a = sql_q($sql, $dbh, 'name', $reg_polis);
-//
-//                //проверка правильности подвержения пароля
-//                if (($passconf1 == $passconf2) && ($a == 0)) {
-//                    $passconf1=password_hash($passconf1,PASSWORD_BCRYPT, $options);
-//                    $status_err['conf wr'] = false;
-//                    $sql = 'Insert into user_db(name,pass,email) values(:name,:pass,:email);';
-//                    $a = sql_c($sql, $dbh, $reg_name, $passconf1, $email);
-//
-//                    if ($a) {
-//                        $_SESSION['name'] = $reg_name;
-//                        $sql = "SELECT * FROM user_db where name=:name";
-//                        $idf = sql_q($sql, $dbh, 'id', $reg_name);//получение id пользователя
-//                        //                    //var_dump($idf);
-//                        $_SESSION['id'] = $idf;
-//                        //                    die(//var_dump($_SESSION['id']));
-//                        $_SESSION['ed'] = 0;
-//                        header('Location:index.php');//переход на страницу профиля
-//
-//                        die();
-//                    } else {
-//                        echo 'обнаружен баг, напишите разработчику, e-mail:denis.mazohin@ya.ru';
-//                        die();
-//                    }
-//                } else {
-//                    if ($passconf1 != $passconf2)
-//                        $status_err['wr conf'] = true;
-//                    if ($a != 0)
-//                        $status_err['user exist'] = true;
-//                }
-//            }
-//        }
-//        else {//sign
+
+	            $reg_polis = "1234 9870 123 9870";
+	            $passconf1 = "testuser";
+	            $passconf2 = "testuser";
+	            $email = "test@email.test";
+	            $name = "Константин";
+	            $surname = "Васильев";
+
+	            $sql = "SELECT * FROM patient where polis=:polis";
+	            $a = sql_quarry($sql,$dbh,'polis',$polis);
+
+                //проверка правильности подвержения пароля
+                if (($passconf1 == $passconf2) && ($a == 0)) {
+                    $passconf1 = password_hash($passconf1,PASSWORD_BCRYPT, $options);
+                    $status_err['conf wr'] = false;
+                    $sql = 'Insert into patient(name,pass,email) values(:name,:pass,:email);';
+                    $a = sql_c($sql, $dbh, $reg_polis, $passconf1, $email);
+
+                    if ($a) {
+                        $_SESSION['name'] = $reg_polis;
+                        $sql = "SELECT * FROM user_db where name=:name";
+                        $idf = sql_q($sql, $dbh, 'id', $reg_polis);//получение id пользователя
+                        //                    //var_dump($idf);
+                        $_SESSION['id'] = $idf;
+                        //                    die(//var_dump($_SESSION['id']));
+                        $_SESSION['ed'] = 0;
+                        header('Location:index.php');//переход на страницу профиля
+
+                        die();
+                    } else {
+                        echo 'обнаружен баг, напишите разработчику, e-mail:denis.mazohin@ya.ru';
+                        die();
+                    }
+                } else {
+                    if ($passconf1 != $passconf2)
+                        $status_err['wr conf'] = true;
+                    if ($a != 0)
+                        $status_err['user exist'] = true;
+                }
+            }
+        }
+        else {//sign
             //die('!');
 //форма входа
 $polis = $_POST['polis'];
 $pass = $_POST['password'];
 $status_err = check_p(1);
-var_dump($status_err);
+//var_dump($status_err);
 //var_dump($status_err);
 echo "stat test";
             if ($status_err['check']) {
 			echo "test 1";
                 $sql = "SELECT * FROM patient where polis=:polis";
                 $a = sql_quarry($sql,$dbh,'polis',$polis);
-                var_dump($a);
-	            echo "test sql";
+
                 if ($a != 0) {
                     $res = sql_quarry($sql, $dbh, 'info', $polis);
                     if ($res == NULL) {
@@ -234,3 +240,4 @@ echo "stat test";
         //исправление class wr на class --done
         //добавить class cor
         //TODO: pattern password
+//todo:
