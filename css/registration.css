@@ -1,0 +1,16 @@
+.block {
+	width: 450px;
+	height: 40px;
+    margin: 0 auto;
+    font-family: 'Roboto Slab', serif;
+}
+.block input {
+	width: 250px;
+	float: right;
+}
+.block label {
+	float: left;
+}
+/*.type {
+	display: none;
+}*/

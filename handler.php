@@ -79,10 +79,10 @@ function check_p($reg_auth) {
 	$options = [
 		'cost' => 13,
 	];
-	$_POST['action'] = 'вход';
-	if (($_POST['action']!=NULL)) {
 
-		if ($_POST['action'] == 'Регистрация') {
+	if (($_POST['Sign'] != NULL)) {
+
+		if ($_POST['action'] == 'Sign up') {
 			//форма регистрации
 			$status_err['no'] = check_p(0);
 			//var_dump($status_err);
@@ -138,7 +138,7 @@ function check_p($reg_auth) {
 				}
 			}
 		}
-		else {//sign
+		else if($_POST['action'] == 'Sign in'){//sign
 	//die('!');
 	//форма входа
 			$polis = $_POST['polis'];
