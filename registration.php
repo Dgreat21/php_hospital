@@ -8,11 +8,11 @@ include_once "header.php";
             <form class="registration" action="handler.php" method="post">
                 <div class="block">
                     <label for="">Имя</label>
-                    <input required type="" name="name" placeholder="Введите ваше имя" ><br>
+                    <input required type="text" name="name" placeholder="Введите ваше имя" ><br>
                 </div>
                 <div class="block">
                     <label for="">Фамилия</label>
-                    <input required type="" name="surname"placeholder="Введите вашу фамилию"><br>
+                    <input required type="text" name="surname" placeholder="Введите вашу фамилию"><br>
                 </div>
                 <div class="block">
                     <label for="">Пароль</label>
@@ -24,11 +24,11 @@ include_once "header.php";
                 </div>
                 <div class="block">
                     <label for="">Номер полиса ОМС</label>
-                    <input required type="tel" name="polis_reg" placeholder="Например, 5634 2646 6437 3462" minlength="16"
-                           maxlength="16"><br></div>
+                    <input required type="tel" name="polis_reg" placeholder="Например, 5634 2646 6437 3462" minlength="19"
+                           maxlength="19" pattern="([0-9]{4}) ([0-9]{4}) ([0-9]{4}) ([0-9]{4})"><br></div>
                 <div class="block">
                     <label for="">Email</label>
-                    <input required type="email" name="email" placeholder="Введите вашу почту"><br></div>
+                    <input required type="email" name="email" placeholder="Введите вашу почту" pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"><br></div>
                 <div class="block">
                     <label class="type" for="">Тип профиля</label>
                     <input  type="tel" placeholder="Клиент = 1, Врач = 2" minlength="1"

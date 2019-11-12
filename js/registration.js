@@ -22,7 +22,8 @@ function add_market_meta(){
         "<input id='submit' type='submit' value='Войти'>" +
         "<p id='haveno_account'>У вас нет Аккаунта?<a href='#'>Зарегистрироваться</a></p>" +
         //Вот поле я добавил
-        "<input type='hidden' name='form' value='Sign in'>" + "</fieldset>" +
+        "<input type='hidden' name='Sign' value='Sign in'>" +
+        "</fieldset>" +
         "</form>";
 
     document.getElementsByClassName("meta-div")[0].appendChild(background);
