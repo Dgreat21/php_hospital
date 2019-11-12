@@ -28,7 +28,8 @@ include_once "header.php";
                            maxlength="19" pattern="([0-9]{4}) ([0-9]{4}) ([0-9]{4}) ([0-9]{4})"><br></div>
                 <div class="block">
                     <label for="">Email</label>
-                    <input required type="email" name="email" placeholder="Введите вашу почту" pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"><br></div>
+                    <input required type="email" name="email" placeholder="Введите вашу почту" pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"><br>
+                </div>
                 <div class="block">
                     <label class="type" for="">Тип профиля</label>
                     <input  type="tel" placeholder="Клиент = 1, Врач = 2" minlength="1"
