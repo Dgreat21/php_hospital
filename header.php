@@ -38,7 +38,10 @@ else
 					</ul>
 				</nav>
 			</div>
-			<button class="login" onclick="add_market_meta()"><?=$name?></button>
+            <?php
+            if ($name == "Войти")
+			echo '<button class="login" onclick="add_market_meta()"><?=$name?></button>';
+            ?>
 		</div>
 	</div>
 </header>

@@ -11,7 +11,7 @@ include_once("header.php");
                         <p>ГБУЗ г. Москвы "Детская городская поликлиника № 133 ДЗМ"</p>
                         <p>г. Москва, Смольная улица, д. 55</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <a href="doctor_record.php/?hospital=133" class="__r right"><span class="__s">Узнать расписание</span></a>
                 </div>
                 <div class="layer1 top">
                     <p>(499) 638-30-69(499) 638-30-68 <br>
@@ -25,7 +25,7 @@ include_once("header.php");
                         <p>ГКУЗ МНПЦ Н филиал № 2 ДЗМ (НД №2)</p>
                         <p>г. Москва, улица Куусинена, д. 4, корп. 3</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <a href="doctor_record.php/?hospital=2" class="__r right"><span class="__s">Узнать расписание</span></a>
                 </div>
                 <div class="layer1 top">
                     <p>(499) 195-30-05(499) 195-00-51 <br>
@@ -40,7 +40,7 @@ include_once("header.php");
                         <p>ГАУЗ "СП № 49 ДЗМ"</p>
                         <p>г. Москва, Солнечногорский проезд, д. 9</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <a href="doctor_record.php/?hospital=49" class="__r right"><span class="__s">Узнать расписание</span></a>
                 </div>
                 <div class="layer1 top">
                     <p>(495) 456-40-78(495) 456-40-78 <br>
@@ -54,7 +54,7 @@ include_once("header.php");
                         <p>ГБУЗ г. Москвы "Детская городская поликлиника № 94 ДЗМ"</p>
                         <p>г. Москва, Вишневая улица, д. 20, корп. 2</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <a href="doctor_record.php/?hospital=94" class="__r right"><span class="__s">Узнать расписание</span></a>
                 </div>
                 <div class="layer1 top">
                     <p>(495) 490-49-49 <br>

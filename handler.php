@@ -28,7 +28,7 @@
 			'email'=>false,
 		],
 	];
-
+var_dump($_POST);
 $reg_polis = $_POST['polis_reg'];
 $passconf1 = $_POST['password'];
 $passconf2 = $_POST['password_confirm'];
