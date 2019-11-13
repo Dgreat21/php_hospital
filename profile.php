@@ -25,11 +25,6 @@ foreach ($a as $key){
 </div>
 <?php
     if ($_POST['exit_but'])
-    {
-        unset($_COOKIE);
-        setcookie("name", NULL, -1);
-        header("location:index.php");
-        die();
-    }
+        include_once(kill.php);
     include_once("footer.html");;
 ?>
