@@ -6,7 +6,6 @@
 	background: #cccccc;
 	border-radius: 6px;
 	margin-bottom: 10px;
-
 }
 
 .layer1 {
@@ -44,6 +43,7 @@
 	transition: 0.5s ease-in-out;
 	opacity: 0.8;
 }
+
 .line{
 	padding-bottom: 12px;
 	border-bottom: 1px solid #dddddd;
@@ -52,4 +52,8 @@
 }
 .top{
 	padding-top: 12px;
+}
+
+.html_architect{
+	background: #cccccc;
 }

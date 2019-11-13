@@ -24,6 +24,7 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
     $c=$sth->execute();
 
     $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($res);
     switch ($key){
         case 'id':
             return $res[0]['id'];
@@ -44,46 +45,64 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
 
 }
 
+    function    sql_get_doctors($dbh, $id){
+
+        $sql = "SELECT
+                    `doctor`.*
+                FROM `doctor`
+                         INNER JOIN `doctorsToHospital`
+                                    ON `doctor`.id = `doctorsToHospital`.doctor_id
+                WHERE `doctorsToHospital`.hospital_id = $id";
+
+        $sth = $dbh->prepare($sql);
+//        $id = (int)$id;
+//        $sth->bindParam(":doc",          $id,                PDO::PARAM_INT);
+        $a = $sth->execute();
+
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        return $res;
+    }
+
     function sql_c($sql, $dbh, $data){
         $sth = $dbh->prepare($sql);
 
         $sth->bindParam(':name',     $data['name'],     PDO::PARAM_STR);
         $sth->bindParam(':surname',  $data['surname'],  PDO::PARAM_STR);
         $sth->bindParam(':polis',    $data['polis'],    PDO::PARAM_STR);
-        $sth->bindParam(':email',    $data['soap'],    PDO::PARAM_STR);
+        $sth->bindParam(':email',    $data['soap'],     PDO::PARAM_STR);
         $sth->bindParam(':pass',     $data['hash'],     PDO::PARAM_STR);
 
         $a = $sth->execute();
         return $a;
     }
 
-
-    function sql_art_up($art,$dbh)
-
+    function sql_get_signs($dbh,  $id)//$who,
     {
-        var_dump($art);
-//        $date=$art['release'];
-//        $art['release']="$date";
-        $sql = " insert into `soonfilms` set `title`=?,`release`=?, `plot`=?,`creator_id`=?";//
-//$sql = " insert into `soonfilms` set `title`='?',`release`='?', `genre`='?', `plot`='?',`creator_id`='?'";//
-        $sth=$dbh->prepare($sql);
-        $a=$sth->execute(array($art['title'],$art['release'],$art['plot'],$_SESSION['id']));
-        return $a;
-    }
-    function sql_art_down($dbh,$id)
-    {
-        $sql = "Select * from soonfilms where creator_id=$id";
-        //echo $sql;
-        $res=sql_q($sql,$dbh,'info');
+        $sql = "SELECT `doctor`.profession, `doctor`.name, `doctor`.surname,  `sign`.time, `sign`.date FROM `sign`  INNER JOIN  `doctor` ON `doctor`.id = `sign`.doctor_id WHERE patient_id = $id";
+
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+
         return $res;
     }
-    function sql_get_id($dbh,$id)//$id -art_id
+
+    function sql_create_sign($dbh, $patient_id, $doc_id, $date, $time)
     {
-        $sql = "Select * from soonfilms where creator_id=".$_SESSION['id']." and id=$id";
-        //echo $sql;
-        $res=sql_q($sql,$dbh,'info');
-        return $res[0];
+        $sql = "INSERT INTO `den_test2`.`sign` (`patient_id`, `doctor_id`, `date`, `time`) VALUES ($patient_id, $doc_id, $date, $time)";
+
+        var_dump($sql);
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+
     }
+
+//    function sql_delete_sign($dbh, $patient_id, $doc_id, $date, $time)
+//    {
+//        $sql = "DELETE FROM `den_test2`.`sign` WHERE `patient_id` = :pat_id AND `doc_id` = :doc_id";
+//    }
 
 
 

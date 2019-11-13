@@ -1,10 +1,9 @@
 <?php
-    session_start();
-if ($_SESSION['name'] == NULL) {
+if ($_COOKIE['name'] == NULL) {
 	$name = "Войти";
 }
 else
-	$name = "Здравствуйте, " . $_SESSION['name'] . " " . $_SESSION['surname'];
+	$name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
 
 
 ?>
@@ -39,8 +38,10 @@ else
 				</nav>
 			</div>
             <?php
-            if ($name == "Войти")
-			echo '<button class="login" onclick="add_market_meta()"><?=$name?></button>';
+            if ($name != "Войти")
+			echo "<button class='login'><a href='profile.php'>$name</a></button>";
+            else
+			echo "<button class='login' onclick='add_market_meta()'>$name</button>";
             ?>
 		</div>
 	</div>
