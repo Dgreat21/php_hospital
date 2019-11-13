@@ -17,5 +17,12 @@ foreach ($a as $key){
                         <input type='submit'  class='__r right __s html_architect' value='Выйти'>
                 </div><br>";
 }
+?>
+    <button type="submit" name="exit_but" class="submit exit">
+        <span>Выйти</span>
+    </button>
+<?php
+    if ($_POST['exit_but'])
+        session_destroy();
     include_once("footer.html");;
 ?>
