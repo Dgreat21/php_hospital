@@ -18,3 +18,4 @@ foreach ($a as $key){
                 </div><br>";
 }
     include_once("footer.html");;
+?>
