@@ -18,11 +18,18 @@ foreach ($a as $key){
                 </div><br>";
 }
 ?>
-    <button type="submit" name="exit_but" class="submit exit">
+<div class="exit">
+    <button type="submit" name="exit_but" class="submit">
         <span>Выйти</span>
     </button>
+</div>
 <?php
     if ($_POST['exit_but'])
-        session_destroy();
+    {
+        unset($_COOKIE);
+        setcookie("name", NULL, -1);
+        header("location:index.php");
+        die();
+    }
     include_once("footer.html");;
 ?>
