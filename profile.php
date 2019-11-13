@@ -19,9 +19,8 @@ foreach ($a as $key){
 }
 ?>
 <div class="exit">
-    <button type="submit" name="exit_but" class="submit">
+    <input type="submit" name="exit_but" class="submit">
         <span>Выйти</span>
-    </button>
 </div>
 <?php
     if ($_POST['exit_but'])
