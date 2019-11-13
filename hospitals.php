@@ -11,7 +11,7 @@ include_once("header.php");
                         <p>ГБУЗ г. Москвы "Детская городская поликлиника № 133 ДЗМ"</p>
                         <p>г. Москва, Смольная улица, д. 55</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <!-- <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a> -->
                     <form method="post" action="doctor_record.php">
                         <input type="hidden" name="host" value="133">
                         <input type="submit"  class="__r right __s html_architect" value="Узнать расписание">
@@ -29,7 +29,7 @@ include_once("header.php");
                         <p>ГКУЗ МНПЦ Н филиал № 2 ДЗМ (НД №2)</p>
                         <p>г. Москва, улица Куусинена, д. 4, корп. 3</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <!-- <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a> -->
                     <form method="post" action="doctor_record.php">
                         <input type="hidden" name="host" value="2">
                         <input type="submit"  class="__r right __s html_architect" value="Узнать расписание">
@@ -48,7 +48,7 @@ include_once("header.php");
                         <p>ГАУЗ "СП № 49 ДЗМ"</p>
                         <p>г. Москва, Солнечногорский проезд, д. 9</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <!-- <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a> -->
                     <form method="post" action="doctor_record.php">
                         <input type="hidden" name="host" value="49">
                         <input type="submit" class="__r right __s html_architect" value="Узнать расписание">
@@ -66,7 +66,7 @@ include_once("header.php");
                         <p>ГБУЗ г. Москвы "Детская городская поликлиника № 94 ДЗМ"</p>
                         <p>г. Москва, Вишневая улица, д. 20, корп. 2</p>
                     </div>
-                    <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a>
+                    <!-- <a href="#" class="__r right"><span class="__s">Узнать расписание</span></a> -->
                     <form method="post" action="doctor_record.php">
                         <input type="hidden" name="host" value="94">
                         <input type="submit" class="__r right __s html_architect" value="Узнать расписание">
