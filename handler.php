@@ -36,6 +36,9 @@ $email = $_POST['email'];
 $name = $_POST['name'];
 $surname = $_POST['surname'];
 
+$status_err['user_no_exist']= true;
+
+var_dump($status_err);
 
 function check_p($reg_auth) {
 	//var_dump($reg_auth);
@@ -125,10 +128,8 @@ function check_p($reg_auth) {
 						die();
 					}
 				} else {
-					if ($passconf1 != $passconf2) {
-                        $status_err['wr conf'] = true;
-                        $dima_galeev_thebest = 1;
-                    }
+					if ($passconf1 != $passconf2)
+						$status_err['wr conf'] = true;
 					if ($a != 0)
 						$status_err['user exist'] = true;
                     header('Location:index.php');
@@ -143,7 +144,7 @@ function check_p($reg_auth) {
 			$status_err = check_p(1);
 
 			if ($status_err['check']) {
-				echo "test 1";
+//				echo "test 1";
 				$sql = "SELECT * FROM patient where polis=:polis";
 				$a = sql_quarry($sql,$dbh,'polis',$polis);
 				if ($a != 0) {
@@ -164,23 +165,24 @@ function check_p($reg_auth) {
                         setcookie("polis", $polis);
 	//                        $_SESSION['ed'] = $res[0]['red'];
 						// //var_dump($_SESSION['ed']);
+                        $status_err['wr pass'] = 0;
+                        $status_err['user_no_exist'] = 0;
                         $_SESSION['status'] = $status_err;
-                        setcookie("status", $status_err);
-						header('Location:index.php');
-						die();
-					} else
-						$status_err['wr pass'] = true;
+					}
+					else
+						{
+						    $status_err['wr pass'] = 1;
+						    $status_err['user_no_exist'] = 0;
+						}
 				} else {
-					$status_err['user !exist'] = true;
+                    $status_err['wr pass'] = 0;
+					$status_err['user_no_exist'] = 1;
 				}
                 $_SESSION['status'] = $status_err;
-                setcookie("status", $status_err);
-//                header('Location:index.php');
-				die();
 			}
-            $_SESSION['status'] = $status_err;
-            setcookie("status", $status_err);
-            header('Location:index.php');
-			die();
 		}
+        setcookie("wrpass", $status_err['wr pass']);
+        setcookie("userNoExist", $status_err['user_no_exist']);
+        header('Location:index.php');
+		die();
 	}

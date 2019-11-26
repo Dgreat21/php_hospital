@@ -4,7 +4,7 @@ session_start();
 if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
 {
     var_dump($_COOKIE);
-    var_dump($_SESSION);
+//    var_dump($_SESSION);
 }
 ?>
 <section>
@@ -22,7 +22,7 @@ if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
                     </div>
                 </form>
                 <div class="about_oms">
-                    <a href="#">Как записаться?</a>
+                    <a href="zaglushka.php">Как записаться?</a>
                     <a href="https://alfastrahoms.ru/about-oms/detail/">Что такое полис ОМС?</a>
                 </div>
             </div>

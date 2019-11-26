@@ -1,10 +1,21 @@
 <?php
-if (!isset($_COOKIE['name']) && !isset($_COOKIE['surname'])) {
+if ($_COOKIE['name'] == NULL) {
 	$name = "Войти";
+    setcookie("name", NULL, -1);
+    setcookie("id", NULL, -1);
+    setcookie("surname", NULL, -1);
+    setcookie("polis", NULL, -1);
+    setcookie("wr pass", NULL, -1);
+    setcookie("user !exist", NULL, -1);
+    unset($_COOKIE);
 }
-else {
-    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
-}
+else
+	{
+
+	    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
+	}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +31,6 @@ else {
 	<link rel="stylesheet" type="text/css" href="css/registration.css">
 	<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
 	<script type="text/javascript" src="js/registration.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<title>SIP</title>
 </head>
 <body>

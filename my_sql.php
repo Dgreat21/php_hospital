@@ -24,7 +24,7 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
     $c=$sth->execute();
 
     $res = $sth->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($res);
+//    var_dump($res);
     switch ($key){
         case 'id':
             return $res[0]['id'];
