@@ -29,5 +29,5 @@ function add_market_meta(){
     document.getElementsByClassName("meta-div")[0].appendChild(background);
 
 
-   background.addEventListener("click", onclick_back_hndl, true);
+    background.addEventListener("click", onclick_back_hndl, true);
 }
