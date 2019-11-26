@@ -1,7 +1,7 @@
 .prevention {
 	display: flex;
+	justify-content: space-around;
 }
 .prevention img {
 	width: 50%;
-	left: 0;
 }
