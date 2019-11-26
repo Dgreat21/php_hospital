@@ -173,7 +173,7 @@ function check_p($reg_auth) {
 				}
                 $_SESSION['status'] = $status_err;
                 setcookie("status", $status_err);
-                header('Location:index.php');
+//                header('Location:index.php');
 				die();
 			}
             $_SESSION['status'] = $status_err;
