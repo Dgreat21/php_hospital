@@ -142,7 +142,6 @@ function check_p($reg_auth) {
 			$pass = $_POST['password'];
 			$status_err = check_p(1);
 
-			echo "stat test";
 			if ($status_err['check']) {
 				echo "test 1";
 				$sql = "SELECT * FROM patient where polis=:polis";
@@ -165,6 +164,7 @@ function check_p($reg_auth) {
                         setcookie("polis", $polis);
 	//                        $_SESSION['ed'] = $res[0]['red'];
 						// //var_dump($_SESSION['ed']);
+                        $_SESSION['status'] = $status_err;
                         setcookie("status", $status_err);
 						header('Location:index.php');
 						die();
@@ -173,10 +173,12 @@ function check_p($reg_auth) {
 				} else {
 					$status_err['user !exist'] = true;
 				}
+                $_SESSION['status'] = $status_err;
                 setcookie("status", $status_err);
 //                header('Location:index.php');
 				die();
 			}
+            $_SESSION['status'] = $status_err;
             setcookie("status", $status_err);
             header('Location:index.php');
 			die();
