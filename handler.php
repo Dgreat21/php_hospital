@@ -68,7 +68,7 @@ function check_p($reg_auth) {
 	}
 }
 
-    var_dump($_POST);
+//    var_dump($_POST);
 
 	$status_err['wr pass'] = false;
 	$status_err['user !exist'] = false;
@@ -87,7 +87,6 @@ function check_p($reg_auth) {
 		if ($_POST['Sign'] == 'Sign up') {
 			//форма регистрации
 			$status_err['no'] = check_p(0);
-			var_dump($status_err);
 			if ($status_err['no']['check']) {
 				$polis = $_POST['polis'];
 				$passconf1 = $_POST['pass+'];
@@ -130,6 +129,7 @@ function check_p($reg_auth) {
 						$status_err['wr conf'] = true;
 					if ($a != 0)
 						$status_err['user exist'] = true;
+                    header('Location:index.php');
 				}
 			}
 		}
@@ -163,6 +163,7 @@ function check_p($reg_auth) {
                         setcookie("polis", $polis);
 	//                        $_SESSION['ed'] = $res[0]['red'];
 						// //var_dump($_SESSION['ed']);
+                        setcookie("status", $status_err);
 						header('Location:index.php');
 						die();
 					} else
@@ -170,6 +171,12 @@ function check_p($reg_auth) {
 				} else {
 					$status_err['user !exist'] = true;
 				}
+                setcookie("status", $status_err);
+                header('Location:index.php');
+				die();
 			}
+            setcookie("status", $status_err);
+            header('Location:index.php');
+			die();
 		}
 	}
