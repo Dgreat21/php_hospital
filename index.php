@@ -16,9 +16,11 @@ if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
                     <label for="">Номер полиса ОМС</label>
                     <div class="oms">
                         <input type="tel" placeholder="Например, 2362 7543 2365 5486">
-                        <button class="submit">
-                            <span>Продолжить</span>
-                        </button>
+                        <form >
+                            <button class="submit" formaction="hospital_s.php">
+                                <span>Продолжить</span>
+                            </button>
+                        </form>
                     </div>
                 </form>
                 <div class="about_oms">
