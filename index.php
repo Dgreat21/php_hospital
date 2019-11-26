@@ -1,5 +1,11 @@
 <?php
 include_once "header.php";
+session_start();
+if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
+{
+    var_dump($_COOKIE);
+    var_dump($_SESSION);
+}
 ?>
 <section>
     <div class="wrapper">
