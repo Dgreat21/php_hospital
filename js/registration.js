@@ -65,7 +65,10 @@ function add_market_meta(){
     a_h.textContent = "Зарегистрироваться";
     a_h.setAttribute('href', 'registration.php');
     a_h.setAttribute('onclick', 'registration()');
-
+    /* Неверно введен пароль*/
+    let cho = document.createElement("cho");
+    cho.setAttribute('id', 'incor_pas');
+    cho.textContent = "Неверный пароль!";
     /*
     div ->
         form ->
@@ -81,6 +84,10 @@ function add_market_meta(){
     field1.appendChild(input_l);
     field1.appendChild(input_p);
     // field1.appendChild(select);
+    var flag = '<?php echo $status_err[\'wr pass\'];?>';
+    if (!flag)
+    {
+        field2.appendChild(cho);}
     field2.appendChild(subm);
     p_h.appendChild(a_h);
     field2.appendChild(p_h);

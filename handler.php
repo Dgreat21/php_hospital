@@ -172,7 +172,7 @@ function check_p($reg_auth) {
 					$status_err['user !exist'] = true;
 				}
                 setcookie("status", $status_err);
-                header('Location:index.php');
+//                header('Location:index.php');
 				die();
 			}
             setcookie("status", $status_err);
