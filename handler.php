@@ -125,8 +125,10 @@ function check_p($reg_auth) {
 						die();
 					}
 				} else {
-					if ($passconf1 != $passconf2)
-						$status_err['wr conf'] = true;
+					if ($passconf1 != $passconf2) {
+                        $status_err['wr conf'] = true;
+                        $dima_galeev_thebest = 1;
+                    }
 					if ($a != 0)
 						$status_err['user exist'] = true;
                     header('Location:index.php');

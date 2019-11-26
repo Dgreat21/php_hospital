@@ -84,8 +84,8 @@ function add_market_meta(){
     field1.appendChild(input_l);
     field1.appendChild(input_p);
     // field1.appendChild(select);
-    var flag = '<?php echo $status_err[\'wr pass\'];?>';
-    if (!flag)
+    var flag = '<?php echo $dima_galeev_thebest;?>';
+    if (flag == "1")
     {
         field2.appendChild(cho);}
     field2.appendChild(subm);

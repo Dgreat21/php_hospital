@@ -1,11 +1,10 @@
 <?php
-if ($_COOKIE['name'] == NULL) {
+if (!isset($_COOKIE['name']) && !isset($_COOKIE['surname'])) {
 	$name = "Войти";
 }
-else
-	$name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
-
-
+else {
+    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
+}
 ?>
 <!DOCTYPE html>
 <html>
