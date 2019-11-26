@@ -20,7 +20,7 @@ function add_market_meta(){
         "<input id='password' type='password' name='password' placeholder='Пароль'>" +
         "</fieldset>"+ "<fieldset id='actions'>" +
         "<input id='submit' type='submit' value='Войти'>" +
-        "<p id='haveno_account'>У вас нет Аккаунта?<a href='#'>Зарегистрироваться</a></p>" +
+        "<p id='haveno_account'>У вас нет Аккаунта?<a href='registration.php'>Зарегистрироваться</a></p>" +
         //Вот поле я добавил
         "<input type='hidden' name='Sign' value='Sign in'>" +
         "</fieldset>" +
