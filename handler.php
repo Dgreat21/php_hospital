@@ -114,10 +114,13 @@ function check_p($reg_auth) {
 					];
 					$sql = 'Insert into patient(name, surname, polis, email, pass) values(:name, :surname, :polis, :email, :pass);';
 					$a = sql_c($sql, $dbh, $data);
+                    $sql = "SELECT * FROM patient where polis=:polis";
+                    $res = sql_quarry($sql, $dbh, 'info', $polis);
 					if ($a) {
 						setcookie('name', $name);
 						setcookie('surname', $surname);
                         setcookie("polis", $polis);
+                        setcookie("id", $res['info']);
 						setcookie('who', 'patient');
 //						var_dump($_COOKIE);
 						header('Location:index.php');//переход на страницу профиля TODO: profile page
