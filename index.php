@@ -1,11 +1,27 @@
 <?php
 include_once "header.php";
 session_start();
+if ($_SESSION['seen'] != 1)
+    $_SESSION['seen'] = 0;
+
 if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
 {
     var_dump($_COOKIE);
-//    var_dump($_SESSION);
+    var_dump($_SESSION);
 }
+
+?>
+<script>
+    let seen = +<?=$_SESSION['seen']?>;
+    if(seen == 0)
+    {
+        alert("Это Учебный проект студентов, а не сайт поликлиники");
+    }
+</script>
+<?php
+$_SESSION['seen'] = 1;
+//    var_dump($_SESSION);
+//    echo "опять все не работает";
 ?>
 <section>
     <div class="wrapper">

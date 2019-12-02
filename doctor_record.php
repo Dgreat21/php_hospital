@@ -18,6 +18,7 @@ foreach ($a as $key)
                         <input required type='date' name='date'>
                         <input required type='time' name='time'>
                         <input type='submit'  class='__r right __s html_architect' value='Записаться'>
+                    </form>
                 </div><br>";
 }
 

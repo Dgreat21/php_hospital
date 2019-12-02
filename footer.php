@@ -8,7 +8,8 @@
 <!--				<a href="#">Справки</a>-->
 				<a href="insurance.php">Страховка</a>
 				<a href="prevention.php">Профилактика</a>
-			</div>
+                <a href="doc_auth.php">Вход для врача</a>
+            </div>
 			<div class="about">
 				<h2>Компания</h2>
 				<a href="zaglushka.php">О компании</a>

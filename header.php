@@ -13,6 +13,9 @@ else
 	{
 
 	    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
+        $kill = "<form action='kill.php'>
+                <input type='submit'  class='login' value='Выйти'>
+            </form>";
 	}
 
 
@@ -50,10 +53,13 @@ else
 				</nav>
 			</div>
             <?php
-            if ($name != "Войти")
-			echo "<button class='login'><a href='profile.php'>$name</a></button>";
-            else
-			echo "<button class='login' onclick='add_market_meta()'>$name</button>";
+            if ($name != "Войти") {
+			    echo "<form action='profile.php'><input type='submit' class='login' value='$name'</a></input></form>";
+			    echo "$kill"."";
+			}
+            else {
+			    echo "<button class='login' onclick='add_market_meta()'>$name</button>";
+            }
             ?>
 		</div>
 	</div>

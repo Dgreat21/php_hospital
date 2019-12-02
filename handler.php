@@ -28,59 +28,53 @@
 			'email'=>false,
 		],
 	];
-//var_dump($_POST);
-$reg_polis = $_POST['polis'];
-$passconf1 = $_POST['pass+'];
-$passconf2 = $_POST['pass-'];
-$email = $_POST['email'];
-$name = $_POST['name'];
-$surname = $_POST['surname'];
+    $reg_polis = $_POST['polis'];
+    $passconf1 = $_POST['pass+'];
+    $passconf2 = $_POST['pass-'];
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
 
-$status_err['user_no_exist']= true;
+    $status_err['user_no_exist']= true;
 
-var_dump($status_err);
 
-function check_p($reg_auth) {
-	//var_dump($reg_auth);
-	if (!$reg_auth) {//0--sign up
-		if ($_POST['polis'] == '')
-			$status_err['no']['polis_reg'] = true; else    $status_err['no']['polis_reg'] = false;//
-		if ($_POST['email'] == '')
-			$status_err['no']['email'] = true; else    $status_err['no']['email'] = false;//
-		if ($_POST['pass+'] == '')
-			$status_err['no']['pass-'] = true; else    $status_err['no']['pass-'] = false;//
-		if ($_POST['pass-'] == '')
-			$status_err['no']['pass+'] = true; else    $status_err['no']['pass+'] = false;
-		if ($_POST['name'] == '')
-			$status_err['no']['name'] = true; else    $status_err['no']['name'] = false;
-		if ($_POST['surname'] == '')
-			$status_err['no']['surname'] = true; else    $status_err['no']['surname'] = false;//
-		$status_err['check'] = !($status_err['no']['polis_reg'] && $status_err['no']['email'] && $status_err['no']['pass-'] && $status_err['no']['pass+'] && $status_err['no']['name'] && $status_err['no']['surname']);
+    function check_p($reg_auth) {
+        if (!$reg_auth) {//0--sign up
+            if ($_POST['polis'] == '')
+                $status_err['no']['polis_reg'] = true; else    $status_err['no']['polis_reg'] = false;//
+            if ($_POST['email'] == '')
+                $status_err['no']['email'] = true; else    $status_err['no']['email'] = false;//
+            if ($_POST['pass+'] == '')
+                $status_err['no']['pass-'] = true; else    $status_err['no']['pass-'] = false;//
+            if ($_POST['pass-'] == '')
+                $status_err['no']['pass+'] = true; else    $status_err['no']['pass+'] = false;
+            if ($_POST['name'] == '')
+                $status_err['no']['name'] = true; else    $status_err['no']['name'] = false;
+            if ($_POST['surname'] == '')
+                $status_err['no']['surname'] = true; else    $status_err['no']['surname'] = false;//
+            $status_err['check'] = !($status_err['no']['polis_reg'] && $status_err['no']['email'] &&
+                $status_err['no']['pass-'] && $status_err['no']['pass+'] &&
+                $status_err['no']['name'] && $status_err['no']['surname']);
+            return $status_err;
+	    } else if ($reg_auth) {
+            if ($_POST['polis'] == '')
+                $status_err['no']['name'] = true; else $status_err['no']['name'] = false;
+            if ($_POST['password'] == '')
+                $status_err['no']['pass'] = true; else $status_err['no']['pass'] = false;
 
-		return $status_err;
-	} else if ($reg_auth) {
-		if ($_POST['polis'] == '')
-			$status_err['no']['name'] = true; else $status_err['no']['name'] = false;
-		if ($_POST['password'] == '')
-			$status_err['no']['pass'] = true; else $status_err['no']['pass'] = false;
-//		var_dump($_POST);
+    		$status_err['check'] = !($status_err['no']['name'] && $status_err['no']['pass']);
 
-		$status_err['check'] = !($status_err['no']['name'] && $status_err['no']['pass']);
+	    	return $status_err;
+	    }
+    }
 
-		return $status_err;
-	}
-}
-
-//    var_dump($_POST);
 
 	$status_err['wr pass'] = false;
 	$status_err['user !exist'] = false;
 	$status_err['user exist']=false;
 	$status_err['wr conf']=false;
 
-	$options = [
-		'cost' => 13,
-	];
+	$options = ['cost' => 13];
 
     if ($_POST['Sign'] == NULL)
         $_POST['Sign'] = 'Sign in';
@@ -98,13 +92,14 @@ function check_p($reg_auth) {
 				$name = $_POST['name'];
 				$surname = $_POST['surname'];
 
-
 				$sql = "SELECT * FROM patient where polis=:polis";
 				$a = sql_quarry($sql, $dbh,'polis',$polis);
+
 				//проверка правильности подвержения пароля
 				if (($passconf1 == $passconf2) && ($a == 0)) {
 					$passconf1 = password_hash($passconf1,PASSWORD_BCRYPT, $options);
 					$status_err['conf wr'] = false;
+
 					$data =[
 						'name'      => $name,
 						'surname'   => $surname,
@@ -112,80 +107,86 @@ function check_p($reg_auth) {
 						'soap'		=> $email,
 						'hash'      => $passconf1,
 					];
+
 					$sql = 'Insert into patient(name, surname, polis, email, pass) values(:name, :surname, :polis, :email, :pass);';
 					$a = sql_c($sql, $dbh, $data);
-                    $sql = "SELECT * FROM patient where polis=:polis";
+
+					$sql = "SELECT * FROM patient where polis=:polis";
                     $res = sql_quarry($sql, $dbh, 'info', $polis);
-					if ($a) {
+
+                    if ($a) {
 						setcookie('name', $name);
 						setcookie('surname', $surname);
                         setcookie("polis", $polis);
                         setcookie("id", $res['info']);
 						setcookie('who', 'patient');
-//						var_dump($_COOKIE);
 						header('Location:index.php');//переход на страницу профиля TODO: profile page
 
 						die();
+
 					} else {
 						echo 'обнаружен баг, напишите разработчику, e-mail:denis.mazohin@ya.ru';
 						die();
 					}
-				} else {
+
+				}
+				else {
 					if ($passconf1 != $passconf2)
 						$status_err['wr conf'] = true;
 					if ($a != 0)
 						$status_err['user exist'] = true;
-                    header('Location:index.php');
 				}
 			}
+            header('Location:index.php');
+            die();
 		}
 		else if($_POST['Sign'] == 'Sign in'){//sign
-	//die('!');
-	//форма входа
+	    //форма входа
 			$polis = $_POST['polis'];
 			$pass = $_POST['password'];
 			$status_err = check_p(1);
 
 			if ($status_err['check']) {
-//				echo "test 1";
+
 				$sql = "SELECT * FROM patient where polis=:polis";
 				$a = sql_quarry($sql,$dbh,'polis',$polis);
+
 				if ($a != 0) {
 					$res = sql_quarry($sql, $dbh, 'info', $polis);
 					if ($res == NULL) {
-						echo 'обнаружен баг, напишите разработчику, e-mail:denis.mazohin@ya.ru';
+						echo 'ошибка доступа к базе данных,<br>напишите пожалуйста на почту разработчика : denis.mazohin@ya.ru';
 						die();
 					}
 
-
 					if (password_verify($pass,$res[0]['pass'])) {
-//						$_SESSION['id'] = $res[0]['id'];// выдается id
-//						$_SESSION['name'] = $res[0]['name'];//сессии передаётся имя пользователя для вывода его на экране
-//						$_SESSION['surname'] = $res[0]['surname'];//сессии передаётся имя пользователя для вывода его на экране
+
                         setcookie('id', $res[0]['id']);
                         setcookie('name', $res[0]['name']);
                         setcookie('surname', $res[0]['surname']);
-                        setcookie("polis", $polis);
-	//                        $_SESSION['ed'] = $res[0]['red'];
-						// //var_dump($_SESSION['ed']);
+                        setcookie('polis', $polis);
+
                         $status_err['wr pass'] = 0;
                         $status_err['user_no_exist'] = 0;
                         $_SESSION['status'] = $status_err;
 					}
-					else
-						{
-						    $status_err['wr pass'] = 1;
-						    $status_err['user_no_exist'] = 0;
-						}
+					else {
+
+					    $status_err['wr pass'] = 1;
+					    $status_err['user_no_exist'] = 0;
+
+					}
 				} else {
-                    $status_err['wr pass'] = 0;
-					$status_err['user_no_exist'] = 1;
+
+				    $status_err['wr pass'] = 0;
+				    $status_err['user_no_exist'] = 1;
+
 				}
                 $_SESSION['status'] = $status_err;
 			}
 		}
-        setcookie("wrpass", $status_err['wr pass']);
-        setcookie("userNoExist", $status_err['user_no_exist']);
+
+        setcookie('wrpass', $status_err['wr pass']);
+        setcookie('userNoExist', $status_err['user_no_exist']);
         header('Location:index.php');
 		die();
 	}

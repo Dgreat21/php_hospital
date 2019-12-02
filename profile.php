@@ -2,10 +2,20 @@
 	include_once("header.php");
     require_once("my_sql.php");
 $a = sql_get_signs($dbh, $_COOKIE['id']);
+$sql = "SELECT * FROM patient where polis=:polis";
+$b = sql_quarry($sql, $dbh, 'info', $_COOKIE['polis']);
+//var_dump($b);
+$d = $b[0]['diagnosis'];
+//var_dump($d);
+if ($d)
+{echo "
+    <div class='Sign_to_doc line'>  Наши врачи поставили вам Диагоноз: $d
+    </div>
+";}
 
-echo "<br><form action='kill.php' style='align = right'>
-                <input type='submit'  class='__r right __s html_architect' value='Выйти'>
-            </form>";
+//echo "<br><form action='kill.php'>
+//                <input type='submit'  class='__r right __s html_architect' value='Выйти'>
+//            </form>";
 foreach ($a as $key){
     $name = $key['name'];
     $surname = $key['surname'];
@@ -18,4 +28,4 @@ foreach ($a as $key){
         </div>";
 }
 
-    include_once("footer.html");;
+    include_once("footer.html");
