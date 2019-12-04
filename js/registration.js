@@ -63,7 +63,7 @@ function add_market_meta(){
     p_h.textContent = "У вас нет аккаунта?";
     a_h = document.createElement("a");
     a_h.textContent = "Зарегистрироваться";
-    a_h.setAttribute('href', '#');
+    a_h.setAttribute('href', 're');
     a_h.setAttribute('onclick', 'registration()');
 
     /*
