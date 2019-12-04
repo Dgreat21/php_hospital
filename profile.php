@@ -28,4 +28,4 @@ foreach ($a as $key){
         </div>";
 }
 
-    include_once("footer.html");
+    include_once("footer.php");
