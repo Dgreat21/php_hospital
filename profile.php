@@ -22,9 +22,14 @@ foreach ($a as $key){
     $profession = strtoupper($key['profession']);
     $date = $key['date'];
     $time = $key['time'];
+    $sign_id = $key['id'];
     echo "
         <div class='Sign_to_doc line'>
             <h1>Вы записаны на прием к Врачу $name $surname <br> по специальности $profession на $date в $time</h1>
+            <form method='post' action='remove_sign.php'>
+                        <input type='hidden' name='sign_id' value='$sign_id'>
+                        <input type='submit'  class='__r right __s html_architect' value='Удалить запись'>
+                    </form>
         </div>";
 }
 

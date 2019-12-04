@@ -10,6 +10,12 @@
     $user = 'den';
     $password = 'jDhIIhWLmBqX';
 
+function translit($str) {
+    $rus = array('А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+    $lat = array('A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
+    return str_replace($rus, $lat, $str);
+}
+
     try {
         $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8mb4 collate utf8mb4_general_ci'));
     } catch (PDOException $e) {
@@ -77,32 +83,114 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
         return $a;
     }
 
-    function sql_get_signs($dbh,  $id)//$who,
+
+        define('PATIENT', 1);
+        define('DOCTOR', 2);
+        define('ADMIN', 3);
+
+    function sql_get_signs($dbh,  $id, $who = PATIENT)//$who,
     {
-        $sql = "SELECT `doctor`.profession, `doctor`.name, `doctor`.surname,  `sign`.time, `sign`.date FROM `sign`  INNER JOIN  `doctor` ON `doctor`.id = `sign`.doctor_id WHERE patient_id = $id";
+//        var_dump($id);
+//        var_dump(DOCTOR);
+//        var_dump($who);
+//        var_dump($who == DOCTOR);
+        if ($who == PATIENT)
+            $sql = "SELECT `sign`.id, `doctor`.profession, `doctor`.name, `doctor`.surname,  `sign`.time, `sign`.date FROM `sign`  INNER JOIN  `doctor` ON `doctor`.id = `sign`.doctor_id WHERE patient_id='$id'";
+        else if ($who == DOCTOR)
+            {
+//                echo "test";
+//                var_dump($id);
+//                var_dump($who);
+                $sql = "SELECT `sign`.id, `patient`.diagnosis, `patient`.name, `patient`.surname,  `sign`.time, `sign`.date FROM `sign`  INNER JOIN  `patient` ON `patient`.id = `sign`.patient_id WHERE doctor_id='$id'";
+            }
 
         $sth = $dbh->prepare($sql);
         $a = $sth->execute();
 
         $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+//        var_dump($res);
 
         return $res;
+    }
+
+    function sql_get_all_docs($dbh)
+    {
+        $sql = "SELECT `doctor`.id, `doctor`.name, `doctor`.surname, `doctor`.profession, `doctor`.active, `doctorsToHospital`.hospital_id FROM `doctor` INNER JOIN `doctorsToHospital` ON `doctorsToHospital`.doctor_id=`doctor`.id";
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return ($res);
     }
 
     function sql_create_sign($dbh, $patient_id, $doc_id, $date, $time)
     {
         $sql = "INSERT INTO `den_test2`.`sign` (`patient_id`, `doctor_id`, `date`, `time`) VALUES ($patient_id, $doc_id, $date, $time)";
 
-        var_dump($sql);
+//        var_dump($sql);
         $sth = $dbh->prepare($sql);
         $a = $sth->execute();
 
     }
 
-//    function sql_delete_sign($dbh, $patient_id, $doc_id, $date, $time)
-//    {
-//        $sql = "DELETE FROM `den_test2`.`sign` WHERE `patient_id` = :pat_id AND `doc_id` = :doc_id";
-//    }
+    function sql_delete_sign($dbh, $sign_id)
+    {
+        $sql = "DELETE FROM `den_test2`.`sign` WHERE id ='$sign_id'";
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+    }
 
+    function sql_rename_doc($dbh, $id, $name, $surname, $profession)
+    {
+        $sql = "UPDATE `doctor` SET `name`=:name, `surname`=:surname, `profession`=:profession WHERE id=$id";
+        $sth = $dbh->prepare($sql);
 
+        $sth->bindParam(':name',        $name,           PDO::PARAM_STR);
+        $sth->bindParam(':surname',     $surname,        PDO::PARAM_STR);
+        $sth->bindParam(':profession',  $profession,     PDO::PARAM_STR);
+//        var_dump($sql);
+        $a = $sth->execute();
+//        var_dump($a);
+    }
 
+    function sql_transfer_doc($dbh, $id, $new_host)
+    {
+        $sql = "UPDATE `doctorsToHospital` SET `hospital_id`=$new_host WHERE `doctor_id`=$id";
+        var_dump($sql);
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+    }
+
+    function sql_vacation_doc($dbh, $id, $flag = 1){
+        $sql = "UPDATE `doctor` SET `active`=$flag WHERE `id`=$id";
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+    }
+
+    function sql_add_doc($dbh, $name, $surname, $profession, $host){
+        $sql = "INSERT INTO `doctor` SET `name`=:name, `surname`=:surname, `profession`=:profession, `active`='1';";
+        $sth = $dbh->prepare($sql);
+
+        $sth->bindParam(':name',        $name,           PDO::PARAM_STR);
+        $sth->bindParam(':surname',     $surname,        PDO::PARAM_STR);
+        $sth->bindParam(':profession',  $profession,     PDO::PARAM_STR);
+//        var_dump($sql);
+        $a = $sth->execute();
+        $sql = "SELECT `doctor`.id FROM doctor WHERE `name`=:name and `surname`=:surname and `profession`=:profession";
+        $sth = $dbh->prepare($sql);
+        $sth->bindParam(':name',        $name,           PDO::PARAM_STR);
+        $sth->bindParam(':surname',     $surname,        PDO::PARAM_STR);
+        $sth->bindParam(':profession',  $profession,     PDO::PARAM_STR);
+        $a = $sth->execute();
+        $res = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $id = $res['id'];
+        $sql = "INSERT INTO `doctorsToHospital` SET `doctor_id`=$id, `hospital_id`=$host;";
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+    }
+
+    function sql_rm_doc($dbh, $id){
+        $sql = "DELETE `doctor`, `doctorsToHospital` FROM `doctor`, `doctorsToHospital` WHERE `doctor`.id=$id OR doctor_id=$id";
+        $sth = $dbh->prepare($sql);
+        $a = $sth->execute();
+    }

@@ -49,7 +49,7 @@ $_SESSION['seen'] = 1;
     </div>
 </section>
 <?php
-include_once "footer.html";
+include_once "footer.php";
 ?>
 </body>
 </html>

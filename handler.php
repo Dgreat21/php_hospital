@@ -56,7 +56,9 @@
                 $status_err['no']['pass-'] && $status_err['no']['pass+'] &&
                 $status_err['no']['name'] && $status_err['no']['surname']);
             return $status_err;
-	    } else if ($reg_auth) {
+
+	    }
+        else if ($reg_auth) {
             if ($_POST['polis'] == '')
                 $status_err['no']['name'] = true; else $status_err['no']['name'] = false;
             if ($_POST['password'] == '')

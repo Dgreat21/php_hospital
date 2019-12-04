@@ -23,7 +23,7 @@ foreach ($a as $key)
 }
 
 
-include_once("footer.html");
+include_once("footer.php");
 ?>
 
 </body>
