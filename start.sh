@@ -1,5 +1,6 @@
-ip=`ifconfig | grep "broadcast " | awk '{print $2}'`
-port=":8888";
-addr="$ip$port";
-echo "Your server is avalibale on: $addr"
-php -S $addr;
+while [ 5 -gt 0 ]
+do
+git pull
+echo 'done'
+sleep 30
+done

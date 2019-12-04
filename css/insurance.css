@@ -1,0 +1,22 @@
+.insurance {
+	font-family: 'Roboto Slab', serif;
+	text-align: center;
+	margin-top: 10px;
+}
+.difference {
+	border: 1px black;
+	background: #cccccc;
+	border-radius: 6px;
+	padding: 20px 20px;
+	text-align:center;
+	width: 768px;
+	margin:20px auto;
+}
+.insurance h2 {
+	font-size: 20px;
+	margin-bottom: 6px;
+}
+.insurance h1 {
+	font-size: 30px;
+	margin-bottom: 10px;
+}

@@ -1,10 +1,22 @@
 <?php
-    session_start();
-if ($_SESSION['name'] == NULL) {
+if ($_COOKIE['name'] == NULL) {
 	$name = "Войти";
+    setcookie("name", NULL, -1);
+    setcookie("id", NULL, -1);
+    setcookie("surname", NULL, -1);
+    setcookie("polis", NULL, -1);
+    setcookie("wr pass", NULL, -1);
+    setcookie("user !exist", NULL, -1);
+    unset($_COOKIE);
 }
 else
-	$name = "Здравствуйте, " . $_SESSION['name'] . " " . $_SESSION['surname'];
+	{
+
+	    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
+        $kill = "<form action='kill.php'>
+                <input type='submit'  class='login' value='Выйти'>
+            </form>";
+	}
 
 
 ?>
@@ -17,6 +29,8 @@ else
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/hospitals.css">
+	<link rel="stylesheet" type="text/css" href="css/insurance.css">
+	<link rel="stylesheet" type="text/css" href="css/prevention.css">
 	<link rel="stylesheet" type="text/css" href="css/registration.css">
 	<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
 	<script type="text/javascript" src="js/registration.js"></script>
@@ -32,15 +46,20 @@ else
 					<ul class="navigation">
 						<li><a href="index.php">Запись к врачу</a></li>
 						<li><a href="hospitals.php">Учреждения</a></li>
-						<li><a href="reference.php">Справки</a></li>
+<!--						<li><a href="reference.php">Справки</a></li>-->
 						<li><a href="insurance.php">Страховка</a></li>
 						<li><a href="prevention.php">Профилактика</a></li>
 					</ul>
 				</nav>
 			</div>
             <?php
-            if ($name == "Войти")
-			echo '<button class="login" onclick="add_market_meta()"><?=$name?></button>';
+            if ($name != "Войти") {
+			    echo "<form action='profile.php'><input type='submit' class='login' value='$name'</a></input></form>";
+			    echo "$kill"."";
+			}
+            else {
+			    echo "<button class='login' onclick='add_market_meta()'>$name</button>";
+            }
             ?>
 		</div>
 	</div>

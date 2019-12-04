@@ -1,5 +1,27 @@
 <?php
 include_once "header.php";
+session_start();
+if ($_SESSION['seen'] != 1)
+    $_SESSION['seen'] = 0;
+
+if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
+{
+    var_dump($_COOKIE);
+    var_dump($_SESSION);
+}
+
+?>
+<script>
+    let seen = +<?=$_SESSION['seen']?>;
+    if(seen == 0)
+    {
+        alert("Это Учебный проект студентов, а не сайт поликлиники");
+    }
+</script>
+<?php
+$_SESSION['seen'] = 1;
+//    var_dump($_SESSION);
+//    echo "опять все не работает";
 ?>
 <section>
     <div class="wrapper">
@@ -10,13 +32,15 @@ include_once "header.php";
                     <label for="">Номер полиса ОМС</label>
                     <div class="oms">
                         <input type="tel" placeholder="Например, 2362 7543 2365 5486">
-                        <button class="submit">
-                            <span>Продолжить</span>
-                        </button>
+                        <form >
+                            <button class="submit" formaction="hospital_s.php">
+                                <span>Продолжить</span>
+                            </button>
+                        </form>
                     </div>
                 </form>
                 <div class="about_oms">
-                    <a href="#">Как записаться?</a>
+                    <a href="zaglushka.php">Как записаться?</a>
                     <a href="https://alfastrahoms.ru/about-oms/detail/">Что такое полис ОМС?</a>
                 </div>
             </div>
