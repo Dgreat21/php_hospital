@@ -12,11 +12,7 @@ if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
 
 ?>
 <script>
-    let seen = +<?=$_SESSION['seen']?>;
-    if(seen == 0)
-    {
         alert("Это Учебный проект студентов, а не сайт поликлиники");
-    }
 </script>
 <?php
 $_SESSION['seen'] = 1;

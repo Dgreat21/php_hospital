@@ -1,9 +1,12 @@
 <?php
-var_dump($_POST);
+//var_dump($_POST);
 //die();
 
 require_once ("my_sql.php");
-
+if (!$_COOKIE['master']){
+    header("location:index.php");
+    die();
+}
 $id = $_POST['doctor'];
 
 switch ($_POST['action']){
@@ -24,9 +27,9 @@ switch ($_POST['action']){
     case "return":
         sql_vacation_doc($dbh, $id, 1);
         break;
-//    case "fired":
-//        sql_rm_doc($dbh, $id);
-//        break;
+    case "fired":
+        sql_rm_doc($dbh, $id);
+        break;
     case "new_doc":
         $name = $_POST['name'];
         $surname = $_POST['surname'];

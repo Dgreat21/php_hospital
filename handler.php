@@ -163,6 +163,8 @@
 					if (password_verify($pass,$res[0]['pass'])) {
 
                         setcookie('id', $res[0]['id']);
+                        if ($res[0]['id'] == 1 || $res[0]['id'] == 14 || $res[0]['id'] == 10)
+                            setcookie('master', true);
                         setcookie('name', $res[0]['name']);
                         setcookie('surname', $res[0]['surname']);
                         setcookie('polis', $polis);

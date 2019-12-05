@@ -182,15 +182,16 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
         $sth->bindParam(':surname',     $surname,        PDO::PARAM_STR);
         $sth->bindParam(':profession',  $profession,     PDO::PARAM_STR);
         $a = $sth->execute();
+        var_dump($a);
         $res = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $id = $res['id'];
-        $sql = "INSERT INTO `doctorsToHospital` SET `doctor_id`=$id, `hospital_id`=$host;";
+        $id = $res[0]['id'];
+        $sql = "INSERT INTO `doctorsToHospital` SET `doctor_id`=$id, `hospital_id`=$host";
         $sth = $dbh->prepare($sql);
         $a = $sth->execute();
     }
 
     function sql_rm_doc($dbh, $id){
-        $sql = "DELETE `doctor`, `doctorsToHospital` FROM `doctor`, `doctorsToHospital` WHERE `doctor`.id=$id OR doctor_id=$id";
+        $sql = "DELETE `doctor`, `doctorsToHospital` FROM `doctor`, `doctorsToHospital` WHERE `doctor`.id=$id AND doctor_id=$id";
         $sth = $dbh->prepare($sql);
         $a = $sth->execute();
     }

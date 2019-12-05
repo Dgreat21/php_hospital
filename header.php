@@ -16,6 +16,7 @@ else
         $kill = "<form action='kill.php'>
                 <input type='submit'  class='login' value='Выйти'>
             </form>";
+
 	}
 
 
@@ -56,6 +57,10 @@ else
             if ($name != "Войти") {
 			    echo "<form action='profile.php'><input type='submit' class='login' value='$name'</a></input></form>";
 			    echo "$kill"."";
+                if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14 || $_COOKIE['id'] == 10){
+                    echo "<form action='admin.php'>
+                            <input type='submit'  class='login' value='Админка'></form>";
+                }
 			}
             else {
 			    echo "<button class='login' onclick='add_market_meta()'>$name</button>";

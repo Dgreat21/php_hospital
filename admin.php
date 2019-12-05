@@ -12,11 +12,16 @@ require_once ("my_sql.php");
 <!--    }-->
 <!--</script>-->
 <?php
+    if (!$_COOKIE['master']){
+        header("location:index.php");
+        die();
+    }
+
     $hospitals = [
             2, 49, 94, 133
     ];
     $docs = sql_get_all_docs($dbh);
-    var_dump($docs);
+//    var_dump($docs);
 //    var_dump($docs);
     foreach ($docs as $key)
     {   $id = $key['id'];
