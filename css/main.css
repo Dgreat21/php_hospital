@@ -257,15 +257,13 @@ h1 .cent{
 }
 
 .Sign_to_doc{
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-bottom: 1%;
-	margin-top: 1%;
+	margin: 0 auto;
+	max-width: 1400px;
 	font-family: Helvetica;
 	background-color: #cccccc;
-	padding: 1.5%;
+	padding: 16px;
 	font-size: 20px;
-	border-radius: 40px;
+	border-radius: 10px;
 }
 
 .exit {
