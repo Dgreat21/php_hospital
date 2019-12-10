@@ -3,6 +3,7 @@
     require_once("my_sql.php");
     ?>
     <section>
+        <div class="wrapper">
         <?php
 $a = sql_get_signs($dbh, $_COOKIE['id']);
 $sql = "SELECT * FROM patient where polis=:polis";
@@ -36,6 +37,7 @@ foreach ($a as $key){
         </div>";
 }
 ?>
+</div>
 </section>
 <?php
     include_once("footer.php");
