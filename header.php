@@ -53,6 +53,7 @@ else
 					</ul>
 				</nav>
 			</div>
+			<div class="menu_right">
             <?php
             if ($name != "Войти") {
 			    echo "<form action='profile.php'><input type='submit' class='login' value='$name'</a></input></form>";
@@ -66,6 +67,7 @@ else
 			    echo "<button class='login' onclick='add_market_meta()'>$name</button>";
             }
             ?>
+        </div>
 		</div>
 	</div>
 </header>
