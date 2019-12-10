@@ -63,6 +63,7 @@ header {
     border-radius: 4px;
     font-family: 'Roboto Slab', serif;
     height: 38px;
+    width: 100px;
     background: #F2F2F2;
     transition: 0.6s ease-in-out;
     margin-left:20px;
@@ -75,7 +76,7 @@ header {
 .content {
 	text-align: center;
 	margin-top: 10px;
-}
+}	
 .content h1 {
 	font-family: 'Roboto Slab', serif;
 	font-size: 32px;
@@ -283,7 +284,9 @@ h1 .cent{
 	font-size: 20px;
 	border-radius: 10px;
 }
-
+.Sign_to_doc p {
+	line-height: 32px;
+}
 .exit {
 	text-align: center;
 }
