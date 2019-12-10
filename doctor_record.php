@@ -5,6 +5,7 @@ if ($_COOKIE['polis'] == NULL)
     header("location:index.php");
 ?>
 <section>
+<div class="wrapper">
     <?php
 $a = sql_get_doctors($dbh, $_POST['host']);
     echo "<br>";
@@ -25,6 +26,7 @@ foreach ($a as $key)
                 </div><br>";
 }
 ?>
+</div>
 </section>
 <?php
 include_once("footer.php");
