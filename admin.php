@@ -16,7 +16,9 @@ require_once ("my_sql.php");
         header("location:index.php");
         die();
     }
-
+?>
+<section>
+    <div class="wrapper">
     $hospitals = [
             2, 49, 94, 133
     ];
@@ -95,6 +97,8 @@ require_once ("my_sql.php");
                     echo "<form method='post' action='hand_admin.php'>
                                                 <input type='submit'  class='__r right __s html_architect' value='Добавить'>
                                         </div><br>";
+</div>
+</section>
     include_once("footer.php");
 //	if($_COOKIE['id'] != 'god')
 //		header('location:https://www.google.com/search?q=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D1%8F+%D0%B3%D0%B5%D0%B9+%D0%B8+%D0%B4%D0%BE%D0%BB%D0%B1%D0%B0%D0%B5%D0%B1+%D0%BB%D0%B5%D0%B7%D1%83+%D0%BA%D1%83%D0%B4%D0%B0+%D0%BD%D0%B5+%D0%BD%D0%B0%D0%B4%D0%BE%3F&oq=%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D1%8F+%D0%B3%D0%B5%D0%B9+%D0%B8+%D0%B4%D0%BE%D0%BB%D0%B1%D0%B0%D0%B5%D0%B1+%D0%BB%D0%B5%D0%B7%D1%83+%D0%BA%D1%83%D0%B4%D0%B0+%D0%BD%D0%B5+%D0%BD%D0%B0%D0%B4%D0%BE%3F&aqs=chrome..69i57.814j0j0&sourceid=chrome&ie=UTF-8');
