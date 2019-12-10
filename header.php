@@ -56,15 +56,15 @@ else
 			<div class="menu_right">
             <?php
             if ($name != "Войти") {
-			    echo "<form action='profile.php'><input type='submit' class='login' value='$name'</a></input></form>";
+			    echo "<form action='profile.php'><input type='submit' class='login_inp' value='$name'</a></input></form>";
 			    echo "$kill"."";
                 if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14 || $_COOKIE['id'] == 10){
                     echo "<form action='admin.php'>
-                            <input type='submit'  class='login' value='Админка'></form>";
+                            <input type='submit'  class='login_inp' value='Админка'></form>";
                 }
 			}
             else {
-			    echo "<button class='login' onclick='add_market_meta()'>$name</button>";
+			    echo "<button class='login_inp' onclick='add_market_meta()'>$name</button>";
             }
             ?>
         </div>
