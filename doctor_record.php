@@ -3,6 +3,9 @@ include_once("header.php");
 require_once("my_sql.php");
 if ($_COOKIE['polis'] == NULL)
     header("location:index.php");
+?>
+<section>
+    <?php
 $a = sql_get_doctors($dbh, $_POST['host']);
     echo "<br>";
 foreach ($a as $key)
@@ -21,8 +24,9 @@ foreach ($a as $key)
                     </form>
                 </div><br>";
 }
-
-
+?>
+</section>
+<?php
 include_once("footer.php");
 ?>
 

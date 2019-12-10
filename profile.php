@@ -1,6 +1,9 @@
 <?php
 	include_once("header.php");
     require_once("my_sql.php");
+    ?>
+    <section>
+        <?php
 $a = sql_get_signs($dbh, $_COOKIE['id']);
 $sql = "SELECT * FROM patient where polis=:polis";
 $b = sql_quarry($sql, $dbh, 'info', $_COOKIE['polis']);
@@ -32,5 +35,8 @@ foreach ($a as $key){
                     </form>
         </div>";
 }
-
+?>
+</section>
+<?php
     include_once("footer.php");
+?>
