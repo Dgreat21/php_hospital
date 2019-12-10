@@ -40,11 +40,14 @@ header {
 	transition: 0.6s ease-in-out;
 	color: #8C8888;
 }
+.menu_right {
+	display: flex;
+	justify-content: space-between;
+}
 .login {
 	border: 1px solid #261B26;
     border-radius: 4px;
     font-family: 'Roboto Slab', serif;
-    width: 300px;
     height: 38px;
     background: #F2F2F2;
     transition: 0.6s ease-in-out;
