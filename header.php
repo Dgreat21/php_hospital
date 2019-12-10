@@ -14,7 +14,7 @@ else
 
 	    $name = "Здравствуйте, " . $_COOKIE['name'] . " " . $_COOKIE['surname'];
         $kill = "<form action='kill.php'>
-                <input type='submit'  class='login' value='Выйти'>
+                <input type='submit'  class='login_inp' value='Выйти'>
             </form>";
 
 	}
@@ -60,7 +60,7 @@ else
 			    echo "$kill"."";
                 if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14 || $_COOKIE['id'] == 10){
                     echo "<form action='admin.php'>
-                            <input type='submit'  class='login' value='Админка'></form>";
+                            <input type='submit'  class='login_inp' value='Админка'></form>";
                 }
 			}
             else {
