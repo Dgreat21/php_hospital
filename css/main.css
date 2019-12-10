@@ -48,11 +48,25 @@ header {
 	border: 1px solid #261B26;
     border-radius: 4px;
     font-family: 'Roboto Slab', serif;
+    width: 300px;
     height: 38px;
     background: #F2F2F2;
     transition: 0.6s ease-in-out;
 }
 .login:hover {
+	transition: 0.6s ease-in-out;
+	color: #8C8888;
+	border: 1px solid #8C8888;;
+}
+.login_inp {
+	border: 1px solid #261B26;
+    border-radius: 4px;
+    font-family: 'Roboto Slab', serif;
+    height: 38px;
+    background: #F2F2F2;
+    transition: 0.6s ease-in-out;
+}
+.login_inp:hover {
 	transition: 0.6s ease-in-out;
 	color: #8C8888;
 	border: 1px solid #8C8888;;
