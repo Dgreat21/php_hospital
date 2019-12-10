@@ -65,6 +65,7 @@ header {
     height: 38px;
     background: #F2F2F2;
     transition: 0.6s ease-in-out;
+    margin-left:20px;
 }
 .login_inp:hover {
 	transition: 0.6s ease-in-out;
