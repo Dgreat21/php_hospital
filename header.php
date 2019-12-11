@@ -19,7 +19,7 @@ else
 
 	}
 
-
+//var_dump($_COOKIE);
 ?>
 <!DOCTYPE html>
 <html>

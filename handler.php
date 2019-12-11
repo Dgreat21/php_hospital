@@ -120,7 +120,7 @@
 						setcookie('name', $name);
 						setcookie('surname', $surname);
                         setcookie("polis", $polis);
-                        setcookie("id", $res['info']);
+                        setcookie("id", $res[0]['id']);
 						setcookie('who', 'patient');
 						header('Location:index.php');//переход на страницу профиля TODO: profile page
 
@@ -139,6 +139,8 @@
 						$status_err['user exist'] = true;
 				}
 			}
+            $status_err['wr pass'] = 0;
+            $status_err['user_no_exist'] = 0;
             header('Location:index.php');
             die();
 		}
