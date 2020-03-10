@@ -48,7 +48,6 @@ header {
 	border: 1px solid #261B26;
     border-radius: 4px;
     font-family: 'Roboto Slab', serif;
-    width: 300px;
     height: 38px;
     background: #F2F2F2;
     transition: 0.6s ease-in-out;
@@ -58,25 +57,10 @@ header {
 	color: #8C8888;
 	border: 1px solid #8C8888;;
 }
-.login_inp {
-	border: 1px solid #261B26;
-    border-radius: 4px;
-    font-family: 'Roboto Slab', serif;
-    height: 38px;
-    width: 100px;
-    background: #F2F2F2;
-    transition: 0.6s ease-in-out;
-    margin-left:20px;
-}
-.login_inp:hover {
-	transition: 0.6s ease-in-out;
-	color: #8C8888;
-	border: 1px solid #8C8888;;
-}
 .content {
 	text-align: center;
 	margin-top: 10px;
-}	
+}
 .content h1 {
 	font-family: 'Roboto Slab', serif;
 	font-size: 32px;
@@ -276,7 +260,7 @@ h1 .cent{
 }
 
 .Sign_to_doc{
-	margin-top: 10px;
+	margin: 0 auto;
 	max-width: 1400px;
 	font-family: Helvetica;
 	background-color: #cccccc;
@@ -284,9 +268,7 @@ h1 .cent{
 	font-size: 20px;
 	border-radius: 10px;
 }
-.Sign_to_doc p {
-	line-height: 32px;
-}
+
 .exit {
 	text-align: center;
 }
