@@ -24,8 +24,9 @@ function add_market_meta(){
     background.innerHTML += "<form id='login' method='post' action='handler.php' name='Вход'>" +
         "<h1>Авторизация</h1>" +
         "<fieldset id='inputs'>" +
-        "<input id='username' type='text' name='polis' placeholder='ПОЛИС ОМС'>" +
-        "<input id='password' type='password' name='password' placeholder='Пароль'>" +
+        "<input id='username' type='text' name='polis' required  minlength='16'" +
+        "                               maxlength='16' pattern='[0-9]{16}' placeholder='ПОЛИС ОМС'>" +
+        "<input id='password' type='password' name='password' placeholder='Пароль' required>" +
         "</fieldset>"+ "<fieldset id='actions'>" +
         "<input id='submit' type='submit' value='Войти'>" +
         "<p id='haveno_account'>У вас нет Аккаунта?<a href='registration.php'>Зарегистрироваться</a></p>" +

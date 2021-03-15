@@ -125,7 +125,6 @@ function sql_quarry($sql, $dbh, $key, $var=NULL)
 
     function sql_create_sign($dbh, $patient_id, $doc_id, $date, $time)
     {
-        echo "что блять происходит";
         $sql = "INSERT INTO `den_test2`.`sign` (`patient_id`, `doctor_id`, `date`, `time`) VALUES ($patient_id, $doc_id, $date, $time)";
 
 //        var_dump($sql);

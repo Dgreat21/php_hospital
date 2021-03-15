@@ -122,6 +122,8 @@
                         setcookie("polis", $polis);
                         setcookie("id", $res[0]['id']);
 						setcookie('who', 'patient');
+//						var_dump($status_err);
+//						die();
 						header('Location:index.php');//переход на страницу профиля TODO: profile page
 
 						die();
@@ -141,6 +143,14 @@
 			}
             $status_err['wr pass'] = 0;
             $status_err['user_no_exist'] = 0;
+            if ($status_err['user exist'] == true)
+            {
+                setcookie('error_value', True);
+                setcookie('error_type', 'user exist');
+                header('Location:registration.php');
+                die();
+            }
+
             header('Location:index.php');
             die();
 		}

@@ -4,16 +4,15 @@ session_start();
 if ($_SESSION['seen'] != 1)
     $_SESSION['seen'] = 0;
 
-if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
+//if ($_COOKIE['id'] == 1 || $_COOKIE['id'] == 14)
+if(0 == 1)
 {
     var_dump($_COOKIE);
     var_dump($_SESSION);
 }
 
 ?>
-<script>
-        alert("Это Учебный проект студентов, а не сайт поликлиники");
-</script>
+
 <?php
 $_SESSION['seen'] = 1;
 //    var_dump($_SESSION);

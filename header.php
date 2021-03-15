@@ -7,7 +7,7 @@ if ($_COOKIE['name'] == NULL) {
     setcookie("polis", NULL, -1);
     setcookie("wr pass", NULL, -1);
     setcookie("user !exist", NULL, -1);
-    unset($_COOKIE);
+//    unset($_COOKIE);
 }
 else
 	{
@@ -17,8 +17,13 @@ else
                 <input type='submit'  class='login_inp' value='Выйти'>
             </form>";
 
-	}
 
+	}
+//var_dump($_COOKIE);
+if ($_COOKIE['error_value'] == True)
+    printf('<script>
+        alert("%s");
+            </script>', $_COOKIE['error_type']);
 //var_dump($_COOKIE);
 ?>
 <!DOCTYPE html>
